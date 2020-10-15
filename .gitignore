@@ -8,7 +8,10 @@
 /bazel-out
 
 # dependencies
-/node_modules
+SIGETGrupo2Cliente/node_modules/
+SIGETGrupo2Cliente/package-lock.json
+package-lock.json
+
 
 # profiling files
 chrome-profiler-events*.json
