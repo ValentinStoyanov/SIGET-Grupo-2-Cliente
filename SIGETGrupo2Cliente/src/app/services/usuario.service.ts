@@ -12,7 +12,7 @@ export class UsuarioService {
   constructor(private readonly http: HttpClient, @Inject(PLATFORM_ID) private platformId: object) {
   }
 
-  getLogin(usuario: UsuarioDto): Observable<UsuarioDto[]> {
+  getLogin(usuario: UsuarioDto): any {
     return this.http.post<any>(`http://localhost:8080/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
   }
 }
