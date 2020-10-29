@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CrearReunionComponent } from './crear reuniones/crear-reunion/crear-reunion.component';
+import { VerReunionesComponent } from './ver-reuniones/ver-reuniones/ver-reuniones.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     LoginComponent,
-    CrearReunionComponent
+    CrearReunionComponent,
+    VerReunionesComponent
   ],
   imports: [
     BrowserModule,
