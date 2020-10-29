@@ -43,6 +43,7 @@ export class LoginComponent {
   updateAddress(): void {
     console.log(this.respuesta);
     if(this.respuesta){
+      this.router.navigate(['reuniones']);
       this.invalid = false;
     }else{
       this.invalid = true;
