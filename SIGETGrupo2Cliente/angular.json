@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SIGETGrupo2Cliente"
+    }
+  },
+  "defaultProject": "SIGETGrupo2Cliente",
+  "cli": {
+    "analytics": false
+  }
 }
