@@ -34,7 +34,6 @@ FullCalendarModule.registerPlugins([
     FormsModule,
     HttpClientModule,
     FullCalendarModule,
-    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
