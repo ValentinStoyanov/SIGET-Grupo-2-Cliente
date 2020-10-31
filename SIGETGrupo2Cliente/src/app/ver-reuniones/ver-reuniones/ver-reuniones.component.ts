@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 import { createEventId, INITIAL_EVENTS } from 'src/app/event-utils';
-import { Calendar, EventInput } from '@fullcalendar/core';
+import { Calendar, CustomButtonInput, EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
+import esLocale from '@fullcalendar/core/locales/es';
+
 @Component({
   selector: 'app-ver-reuniones',
   templateUrl: './ver-reuniones.component.html',
@@ -28,7 +30,7 @@ export class VerReunionesComponent implements OnInit {
   ngOnInit(): void {
 
     this.reunionService
-     .getByConvocante(localStorage.getItem("name"))
+     .getByAsistentes(localStorage.getItem("name"))
      .subscribe({
       next: (reunionesReceived: ReunionDto[]) => {
         this.reuniones = reunionesReceived;
@@ -51,8 +53,8 @@ export class VerReunionesComponent implements OnInit {
         {
           id: createEventId(),
           title: reunion.temas,
-          start: this.TODAY_STR + 'T19:00:00',
-          end: this.TODAY_STR +  'T19:30:00'
+          start: new Date(reunion.hora_inicio),
+          end: new Date(reunion.hora_fin),
         }
       this.eventosReuniones.push(evento);
       console.log(this.eventosReuniones);
@@ -62,7 +64,14 @@ export class VerReunionesComponent implements OnInit {
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
+        right: 'dayGridMonth,timeGridWeek'
       },
+      buttonText:{
+        'today': 'Hoy',
+        'dayGridMonth': 'Mes',
+        'timeGridWeek': 'Semana'
+      },
+      locale: 'es',
       initialView: 'dayGridMonth',
       initialEvents: this.eventosReuniones, // alternatively, use the `events` setting to fetch from a feed
       weekends: true,
@@ -92,20 +101,7 @@ export class VerReunionesComponent implements OnInit {
   }
 
   handleDateSelect(selectInfo: DateSelectArg) {
-    const title = prompt('Please enter a new title for your event');
-    const calendarApi = selectInfo.view.calendar;
-
-    calendarApi.unselect(); // clear date selection
-
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      });
-    }
+    //Metodo que se ejecuta al hacer click en un dia en el calendario
   }
 
   handleEventClick(clickInfo: EventClickArg) {

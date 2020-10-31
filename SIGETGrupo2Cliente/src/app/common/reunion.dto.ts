@@ -7,5 +7,4 @@ export class ReunionDto {
   hora_fin: string;
   asistentes: string[];
   convocante: string;
-  
 }
