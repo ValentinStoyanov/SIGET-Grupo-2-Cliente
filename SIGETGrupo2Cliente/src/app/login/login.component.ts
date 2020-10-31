@@ -43,6 +43,8 @@ export class LoginComponent {
   updateAddress(): void {
     console.log(this.respuesta);
     if(this.respuesta){
+      localStorage.setItem("name", `${this.email}`);
+      this.router.navigate(['reuniones']);
       this.invalid = false;
     }else{
       this.invalid = true;
