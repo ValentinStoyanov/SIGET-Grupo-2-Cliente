@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 import { createEventId, INITIAL_EVENTS } from 'src/app/event-utils';
-import { Calendar } from '@fullcalendar/core';
+import { Calendar, EventInput } from '@fullcalendar/core';
+import { ReunionDto } from 'src/app/common/reunion.dto';
+import { ReunionService } from 'src/app/services/reunion.service';
 @Component({
   selector: 'app-ver-reuniones',
   templateUrl: './ver-reuniones.component.html',
@@ -9,34 +11,76 @@ import { Calendar } from '@fullcalendar/core';
 })
 export class VerReunionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private reunionService: ReunionService,
+  ) { }
+
+  reuniones: ReunionDto[];
+  nombreUsuario = localStorage.getItem("name");
+  loading=false;
+  eventGuid = 0;
+  eventosReuniones: EventInput[] = [];
+  TODAY_STR = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of today
+  calendarOptions: CalendarOptions
+  currentEvents: EventApi[]
+  calendarVisible: Boolean;
 
   ngOnInit(): void {
+
+    this.reunionService
+     .getByConvocante(localStorage.getItem("name"))
+     .subscribe({
+      next: (reunionesReceived: ReunionDto[]) => {
+        this.reuniones = reunionesReceived;
+        console.log(this.reuniones);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (this.updateCalendar()),
+    });
+
+    
   }
-  calendarVisible = true;
-  calendarOptions: CalendarOptions = {
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-    },
-    initialView: 'dayGridMonth',
-    initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
-    weekends: true,
-    editable: true,
-    selectable: true,
-    selectMirror: true,
-    dayMaxEvents: true,
-    select: this.handleDateSelect.bind(this),
-    eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
-    /* you can update a remote database when these fire:
-    eventAdd:
-    eventChange:
-    eventRemove:
-    */
-  };
-  currentEvents: EventApi[] = [];
+  
+
+  updateCalendar(): void {
+    this.reuniones.forEach(reunion => {
+      console.log(reunion.temas);
+      let evento: EventInput = 
+        {
+          id: createEventId(),
+          title: reunion.temas,
+          start: this.TODAY_STR + 'T19:00:00',
+          end: this.TODAY_STR +  'T19:30:00'
+        }
+      this.eventosReuniones.push(evento);
+      console.log(this.eventosReuniones);
+    });
+    this.calendarVisible = true;
+    this.calendarOptions= {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+      },
+      initialView: 'dayGridMonth',
+      initialEvents: this.eventosReuniones, // alternatively, use the `events` setting to fetch from a feed
+      weekends: true,
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
+      select: this.handleDateSelect.bind(this),
+      eventClick: this.handleEventClick.bind(this),
+      eventsSet: this.handleEvents.bind(this)
+      /* you can update a remote database when these fire:
+      eventAdd:
+      eventChange:
+      eventRemove:
+      */
+    };
+    this.currentEvents = [];
+  }
 
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
@@ -65,12 +109,14 @@ export class VerReunionesComponent implements OnInit {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-      clickInfo.event.remove();
-    }
+    //Implementar si queremos que haga algo al hacer click en la reunion en el calendario.
   }
 
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
+  }
+
+  createEventId() {
+    return String(this.eventGuid++);
   }
 }

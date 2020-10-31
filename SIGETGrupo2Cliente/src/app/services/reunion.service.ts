@@ -13,11 +13,11 @@ export class ReunionService {
   constructor(private readonly http: HttpClient, @Inject(PLATFORM_ID) private platformId: object) {
   }
 
-  getAll(): Observable<ReunionDto[]> {
-    return this.http.get<any>(`http://localhost:8080/reuniones/getAll`)
+  getByConvocante(name: string): Observable<ReunionDto[]> {
+    return this.http.get<any>(`http://localhost:8080/reuniones/get?convocante=${name}`)
     .pipe(
-      map((tareasDto: ReunionDto[]) => {
-        return tareasDto;
+      map((reunionesDto: ReunionDto[]) => {
+        return reunionesDto;
       })
     );
   }

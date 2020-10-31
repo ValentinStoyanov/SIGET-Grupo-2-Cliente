@@ -13,7 +13,8 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
-import { MDBBootstrapModule } from 'angular-bootstrap-md/lib/free/mdb-free.module';
+import {MatCardModule} from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -32,8 +33,10 @@ FullCalendarModule.registerPlugins([
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule,
     HttpClientModule,
     FullCalendarModule,
+    MatCardModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
