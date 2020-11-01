@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VerReunionesComponent } from './ver-reuniones/ver-reuniones/ver-reuniones.component';
+import { VerUsuariosComponent } from './gestionUsuario/gestionUsuario.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -27,6 +28,7 @@ FullCalendarModule.registerPlugins([
   declarations: [
     AppComponent, 
     LoginComponent,
+    VerReunionesComponent,
     VerReunionesComponent
   ],
   imports: [

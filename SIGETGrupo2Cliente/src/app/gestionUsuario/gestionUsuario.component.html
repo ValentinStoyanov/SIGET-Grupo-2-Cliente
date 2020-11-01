@@ -1,0 +1,67 @@
+<div class="row" style="margin-left: auto;">
+    <table class="table table-striped">
+        <thead class="tareasTableHead">
+            <tr>
+                <th scope="col" sortable="username">Nombre de Usuario</th>
+                <th scope="col" sortable="password">Contraseña</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>
+                    {{usuario.username}}
+                </td>
+                <td>
+                    {{ usuario.password }}
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button" (click)="deleteUsuario(usuario.username)">
+                        Borrar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div style="margin-left: 20px;">
+    <div class="row" style="margin-left: auto;">
+      <label>Datos Usuarios</label>
+    </div>
+    <form [formGroup]="editForm">
+      <div class="row">
+        <div class="col-3">
+          <label>Usuario</label>
+          <input
+            formControlName="username"
+            class="form-control"
+            placeholder="Usuairo"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label>Contraseña</label>
+          <input
+            formControlName="contraseña"
+            class="form-control"
+            placeholder="Contraseña del usuario"
+          />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 5px;">
+        <div class="col-1">
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="updateUsuario()"
+          >
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
