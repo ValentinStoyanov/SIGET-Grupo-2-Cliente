@@ -1,10 +1,18 @@
+// app.routing.ts
+
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from "@angular/router";
+import { LoginComponent } from "./login/login.component";
+import { VerReunionesComponent } from './ver-reuniones/ver-reuniones/ver-reuniones.component';
 
-const routes: Routes = [];
 
+const appRoutes = [
+  { path: "", redirectTo: 'login', pathMatch: "full" },
+  { path: "login", component: LoginComponent, pathMatch: "full" },
+  { path: "reuniones", component: VerReunionesComponent, pathMatch: "full"},
+];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
