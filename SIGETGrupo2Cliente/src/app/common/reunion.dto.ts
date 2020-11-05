@@ -1,5 +1,3 @@
-import { IsString, IsNotEmpty } from 'class-validator';
-
 export class ReunionDto {
   temas: string;
   descripcion: string;
