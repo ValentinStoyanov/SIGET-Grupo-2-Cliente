@@ -105,6 +105,21 @@ export class VerReunionesComponent implements OnInit {
 
   handleEventClick(clickInfo: EventClickArg) {
     //Implementar si queremos que haga algo al hacer click en la reunion en el calendario.
+    for (let i = 0; i < this.reuniones.length; i++){
+      if(this.reuniones[i].temas==clickInfo.event.title){
+        var convo = this.reuniones[i].convocante  
+        var assis = this.reuniones[i].asistentes
+        var desc = this.reuniones[i].descripcion
+      }
+    }
+
+
+    alert('Tema: ' + clickInfo.event.title + " \n"
+    +"Fecha y hora de inicio: "+clickInfo.event.start+"\n"
+    +"Fecha y hora de inicio: " +clickInfo.event.end+"\n"
+    +"Convocante: "+convo+"\n"
+    +"Assistentes: "+assis+"\n"
+    +"Descripcion: "+desc)
   }
 
   handleEvents(events: EventApi[]) {
