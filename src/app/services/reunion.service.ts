@@ -13,7 +13,7 @@ export class ReunionService {
   }
 
   getByAsistentes(name: string): Observable<ReunionDto[]> {
-    return this.http.get<any>(`http://localhost:8080/reuniones/get?asistentes=${name}`)
+    return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/get?asistentes=${name}`)
     .pipe(
       map((reunionesDto: ReunionDto[]) => {
         console.log(reunionesDto);
