@@ -13,7 +13,6 @@ export class UsuarioService {
   }
 
   getLogin(usuario: UsuarioDto): any {
-    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/login
-      ?username=${usuario.username}&password=${usuario.password}`, {});
+    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/login?username=${usuario.username}&password=${usuario.password}`, {});
   }
 }
