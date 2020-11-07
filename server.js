@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static('/sigetgrupo2-cliente'));
 
 app.get('*', function(req,res) {
-  res.sendFile(path.join('/index.html'));
+  res.sendFile('/index.html');
 });
 
 // Start the app by listening on the default Heroku port
