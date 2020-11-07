@@ -5,12 +5,15 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/sigetgrupo2-cliente'));
+app.use(express.static(__dirname + '/dist/SIGET-Grupo-2-Cliente'));
 
 app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/sigetgrupo2-cliente/index.html'));
+
+  res.sendFile(path.join(__dirname+'/dist/SIGET-Grupo-2-Cliente/index.html'));
+});
+app.get('*', (req, res) => {
+  res.sendFile(`./front-end/dist/index.html`); // load the single view file (angular will handle the page changes on the front-end)
 });
 
-// Start the app by listening on the default Heroku port 
+// Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
