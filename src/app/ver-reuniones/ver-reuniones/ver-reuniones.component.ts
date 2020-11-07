@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
-import { createEventId, INITIAL_EVENTS } from 'src/app/event-utils';
-import { Calendar, CustomButtonInput, EventInput } from '@fullcalendar/core';
+import { createEventId } from 'src/app/event-utils';
+import { EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
-import esLocale from '@fullcalendar/core/locales/es';
 
 @Component({
   selector: 'app-ver-reuniones',
@@ -25,7 +24,7 @@ export class VerReunionesComponent implements OnInit {
   TODAY_STR = new Date().toISOString().replace(/T.*$/, ''); // YYYY-MM-DD of today
   calendarOptions: CalendarOptions
   currentEvents: EventApi[]
-  calendarVisible: Boolean;
+  calendarVisible: boolean;
 
   ngOnInit(): void {
 

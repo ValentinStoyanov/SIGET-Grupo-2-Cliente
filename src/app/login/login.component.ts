@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor(private servicioUsuario: UsuarioService, public router: Router,) {}
   invalid = false;
   submitted = false;
-  respuesta: Boolean;
+  respuesta: boolean;
 
   login() {
     this.submitted = true;
@@ -29,7 +29,7 @@ export class LoginComponent {
     this.servicioUsuario
       .getLogin(usuario)
       .subscribe({
-      next: (resp: Boolean) => {
+      next: (resp: boolean) => {
         this.respuesta = resp;
       },
       error: (err) => {
