@@ -15,6 +15,8 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegistroComponent } from './registro/registro/registro.component';
+
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -27,7 +29,8 @@ FullCalendarModule.registerPlugins([
   declarations: [
     AppComponent, 
     LoginComponent,
-    VerReunionesComponent
+    VerReunionesComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
