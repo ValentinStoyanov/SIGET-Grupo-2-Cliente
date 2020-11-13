@@ -44,7 +44,7 @@ export class LoginComponent {
     console.log(this.respuesta);
     if(this.respuesta){
       localStorage.setItem("name", `${this.email}`);
-      this.router.navigate(['menu']);
+      this.router.navigate(['reuniones']);
       this.invalid = false;
     }else{
       this.invalid = true;
