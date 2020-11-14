@@ -9,6 +9,9 @@ import { ReunionDto } from '../common/reunion.dto';
   providedIn: 'root'
 })
 export class ReunionService {
+  postId;
+  errorMessage;
+
   constructor(private readonly http: HttpClient, @Inject(PLATFORM_ID) private platformId: object) {
   }
 
@@ -21,4 +24,20 @@ export class ReunionService {
       })
     );
   }
+
+
+
+  deleteByHoraInicio(reunion: ReunionDto) {
+    this.http.post<any>(`https://siget-grupo2.herokuapp.com/reuniones/delete?horaInicio=${reunion.horaInicio}`, { title: 'Angular POST delete' }).subscribe({
+        next: data => {
+            this.postId = data.id;
+        },
+        error: error => {
+            this.errorMessage = error.message;
+            console.error('There was an error!', error);
+        }
+    })
+}
+
+
 }
