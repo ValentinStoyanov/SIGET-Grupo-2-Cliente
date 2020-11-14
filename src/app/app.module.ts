@@ -27,7 +27,8 @@ FullCalendarModule.registerPlugins([
   declarations: [
     AppComponent, 
     LoginComponent,
-    VerReunionesComponent
+    VerReunionesComponent,
+    
   ],
   imports: [
     BrowserModule,
