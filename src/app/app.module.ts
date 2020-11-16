@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,6 +14,7 @@ import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CrearReunionComponent } from './crear-reunion/crear-reunion.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -28,7 +28,7 @@ FullCalendarModule.registerPlugins([
     AppComponent, 
     LoginComponent,
     VerReunionesComponent,
-    
+    CrearReunionComponent
   ],
   imports: [
     BrowserModule,
