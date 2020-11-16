@@ -52,8 +52,8 @@ export class VerReunionesComponent implements OnInit {
         {
           id: createEventId(),
           title: reunion.temas,
-          start: new Date(reunion.hora_inicio),
-          end: new Date(reunion.hora_fin),
+          start: new Date(reunion.horaInicio),
+          end: new Date(reunion.horaFin),
         }
       this.eventosReuniones.push(evento);
       console.log(this.eventosReuniones);

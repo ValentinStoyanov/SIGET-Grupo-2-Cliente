@@ -13,8 +13,8 @@ export class CrearReunionComponent {
   temas: string;
   descripcion: string;
   fecha: string;
-  hora_fin: string;
-  hora_inicio: string;
+  horaFin: string;
+  horaInicio: string;
   asistentes: string[];
   convocante: string;
 
@@ -24,8 +24,8 @@ export class CrearReunionComponent {
       temas: this.temas,
       descripcion: this.descripcion,
       fecha: this.fecha,
-      hora_fin: this.hora_fin,
-      hora_inicio: this.hora_inicio,
+      horaFin: this.horaFin,
+      horaInicio: this.horaInicio,
       asistentes: this.asistentes,
       convocante: this.convocante
     }

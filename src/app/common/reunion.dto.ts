@@ -2,8 +2,8 @@ export class ReunionDto {
   temas: string;
   descripcion: string;
   fecha: string;
-  hora_inicio: string;
-  hora_fin: string;
+  horaInicio: string;
+  horaFin: string;
   asistentes: string[];
   convocante: string;
 }

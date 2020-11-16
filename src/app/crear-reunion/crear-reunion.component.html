@@ -1,3 +1,15 @@
+<header>
+    <section class="wrapper">
+        <nav>
+            <ul>
+                <li><a href="reuniones">Inicio</a></li>
+                <li><a href="crear-reunion">Crear Reunión</a></li>
+                <li><a href="login">Log out</a></li>
+            </ul>
+        </nav>
+    </section>
+  </header>
+
 <div class="jumbotron jumbotron-fluid">
     <div style="text-align: center;">
         <div class="container">
@@ -27,11 +39,11 @@
                     <input type="date" class="form-control" name="Fecha">
                 </div>
                 <div class="col">
-                    <label for="hora_inicio">Hora inicio</label>
+                    <label for="horaInicio">Hora inicio</label>
                     <input type="time" class="form-control" name="Hora inicio">
                 </div>
                 <div class="col">
-                    <label for="hora_fin">Hora fin</label>
+                    <label for="horaFin">Hora fin</label>
                     <input type="time" class="form-control" name="Hora fin">
                 </div>
             </div>
@@ -50,7 +62,7 @@
         </form>
    
 
-    <button type="button" class="btn btn-primary">Crear reunión</button>
+    <button type="submit" (click)="crear_reunion()">Crear reunión</button>
 </div>
 
        
