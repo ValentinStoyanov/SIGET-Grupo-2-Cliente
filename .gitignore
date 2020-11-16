@@ -8,8 +8,8 @@
 /bazel-out
 
 # dependencies
-SIGETGrupo2Cliente/node_modules/
-SIGETGrupo2Cliente/package-lock.json
+node_modules/
+package-lock.json
 package-lock.json
 
 
