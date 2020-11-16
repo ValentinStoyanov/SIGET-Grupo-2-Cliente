@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -29,11 +28,7 @@ FullCalendarModule.registerPlugins([
     AppComponent, 
     LoginComponent,
     VerReunionesComponent,
-<<<<<<< HEAD
     CrearReunionComponent
-=======
-    
->>>>>>> origin/develop
   ],
   imports: [
     BrowserModule,
