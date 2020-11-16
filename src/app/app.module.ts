@@ -29,7 +29,11 @@ FullCalendarModule.registerPlugins([
     AppComponent, 
     LoginComponent,
     VerReunionesComponent,
+<<<<<<< HEAD
     CrearReunionComponent
+=======
+    
+>>>>>>> origin/develop
   ],
   imports: [
     BrowserModule,
