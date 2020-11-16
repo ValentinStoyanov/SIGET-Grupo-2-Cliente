@@ -1,38 +1,30 @@
-<header>
-    <section class="wrapper">
-        <nav>
-            <ul>
-                <li><a href="reuniones">Inicio</a></li>
-                <li><a href="crear-reunion">Crear Reunión</a></li>
-                <li><a href="login">Log out</a></li>
-            </ul>
-        </nav>
-    </section>
-  </header>
 
-<div class="jumbotron jumbotron-fluid">
-    <div style="text-align: center;">
-        <div class="container">
-        <h1 class="display-10">CREAR REUNIÓN</h1>
-        </div>
-    </div>
-  </div>
 
-  
-<div class="container">
+    <header>
+        <section class="wrapper">
+            <nav>
+                <ul>
+                    <li><a href="reuniones">Inicio</a></li>
+                    <li><a href="crear-reunion">Crear Reunión</a></li>
+                    <li><a href="login">Log out</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
     
+<div class="container">
+    <br><br><br><br>
         <form>
             <div class="form-group">
               <label for="Nombre reunión">Nombre reunión</label>
               <input type="text" class="form-control">
             </div>
-
+            <br> <br>
             <div class="form-group">
                 <label for="Descripcion">Descripcion</label>
                 <textarea class="form-control form-control-lg"></textarea>
             </div>
-
-           
+            <br> <br>
             <div class="row">
                 <div class="col">
                     <label for="Fecha">Fecha</label>
@@ -47,7 +39,7 @@
                     <input type="time" class="form-control" name="Hora fin">
                 </div>
             </div>
-            
+            <br> <br>
             <div class="form-group">
                 <label for="asistentes">Asistentes</label>
                 <select class="custom-select" id="asistentes" required>
@@ -60,11 +52,7 @@
             </div>
 
         </form>
-   
+        <br>
 
     <button type="submit" (click)="crear_reunion()">Crear reunión</button>
 </div>
-
-       
-
-
