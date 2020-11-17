@@ -18,6 +18,10 @@
         required="required"
       />
       <button type="submit" (click)="login()">Log in</button>
+      <br>
+      <p>
+        <a href="registro">Crear nueva cuenta</a>
+    </p> 
       <div class="row" *ngIf="submitted && invalid">
         <label>Error en la autenticación</label>
       </div>
