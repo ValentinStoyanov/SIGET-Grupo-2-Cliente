@@ -15,6 +15,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CrearReunionComponent } from './crear-reunion/crear-reunion.component';
+import { CookieService } from 'ngx-cookie-service';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -39,7 +40,7 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     MatCardModule  
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -26,7 +26,14 @@ export class LoginComponent {
       username: this.email,
       password: this.password
     }
-    this.servicioUsuario
+
+    this.servicioUsuario.getLogin(usuario).subscribe(data => {
+      this.servicioUsuario.setToken(data.token);
+      this.router.navigateByUrl('reuniones');
+    });
+    
+  }
+    /*this.servicioUsuario
       .getLogin(usuario)
       .subscribe({
       next: (resp: boolean) => {
@@ -49,5 +56,5 @@ export class LoginComponent {
     }else{
       this.invalid = true;
     }
-  }
+  }*/
 }
