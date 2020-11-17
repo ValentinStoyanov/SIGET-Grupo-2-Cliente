@@ -16,6 +16,10 @@
                     </div>
                 </div>
             </div>
+
+            <label>Rol ID:</label> 
+                 <input type="text" name="Rol ID" id="Rol ID" placeholder="Ingrese su rol">  <br>
+
             <label>Nombre:</label> 
                 <input type="text" name="Nombre" id="Nombres" placeholder="Ingrese su nombre">  <br>
 
@@ -39,12 +43,11 @@
                 Estoy de acuerdo con <a href="#">Terminos y condiciones</a>
             </p>
         
-            <input type="submit" value="Resgistrar"> <br>
-        
+            <button (click)="metodoRegistrar()"> Registrar </button>
         
             <p>
                 <a href="#">¿Ya tengo cuenta?</a>
-            </p>
+            </p> 
 
         </section>
     </body>
