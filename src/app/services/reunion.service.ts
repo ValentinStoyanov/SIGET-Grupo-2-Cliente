@@ -11,7 +11,7 @@ import { ReunionDto } from '../common/reunion.dto';
 export class ReunionService {
   
   getReunion(reunion: ReunionDto): any {
-    return this.http.post<any>(`http://localhost:8080/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&fecha=${reunion.fecha}&horaFin=${reunion.horaFin}&horaInicio=${reunion.horaInicio}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}`, {});
+    return this.http.post<any>(`http://localhost:8080/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaFin=${reunion.horaFin}&horaInicio=${reunion.horaInicio}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}`, {});
   }
   postId;
   errorMessage;

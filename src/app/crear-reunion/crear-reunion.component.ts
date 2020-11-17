@@ -9,27 +9,39 @@ import { ReunionService } from 'src/app/services/reunion.service';
   styleUrls: ['./crear-reunion.component.css']
 })
 export class CrearReunionComponent {
-  constructor(public router: Router, private reunionServicio: ReunionService) { }
   temas: string;
   descripcion: string;
-  fecha: string;
   horaFin: string;
   horaInicio: string;
   asistentes: string[];
   convocante: string;
+ 
+  constructor(public router: Router, private reunionServicio: ReunionService) { }
+  respuesta: ReunionDto;
 
 
  crear_reunion() {
+
     const reunion: ReunionDto = {
       temas: this.temas,
       descripcion: this.descripcion,
-      fecha: this.fecha,
       horaFin: this.horaFin,
       horaInicio: this.horaInicio,
       asistentes: this.asistentes,
       convocante: this.convocante
     }
-    this.reunionServicio.getReunion(reunion)
+
+    this.reunionServicio
+    .getReunion(reunion)
+    .subscribe({
+      next: (resp: ReunionDto) => {
+        this.respuesta = resp;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (console.log("OK")),
+    });
   }
 
 }
