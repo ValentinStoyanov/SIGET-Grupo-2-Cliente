@@ -24,7 +24,11 @@ export class LoginComponent {
     
     const usuario: UsuarioDto = {
       username: this.email,
-      password: this.password
+      password: this.password,
+      nombre: "", 
+      apellidos: "", 
+      email : "", 
+      telefono: 1,
     }
     this.servicioUsuario
       .getLogin(usuario)
@@ -50,4 +54,9 @@ export class LoginComponent {
       this.invalid = true;
     }
   }
+
+  registrar(): void {
+    this.router.navigate(['registro'])
+  }
+
 }

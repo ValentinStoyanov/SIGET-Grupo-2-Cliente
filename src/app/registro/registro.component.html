@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>
+            Formulario de registro
+        </title>
+    </head>
+
+<div class="container">
+    <body>
+        <section>
+           
+            <div class="jumbotron jumbotron-fluid">
+                <div style="text-align: center;">
+                    <div class="container">
+                    <h1 class="display-10">Formulario de registro</h1>
+                    </div>
+                </div>
+            </div>
+
+            <label>Username:</label> 
+            <input
+            type="username"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="username"
+            required="username"
+            />
+
+            <label>password:</label>
+            <input
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="password"
+            required="password"
+            />
+
+
+            <label>nombre:</label>
+            <input
+            type="nombre"
+            [(ngModel)]="nombre"
+            name="nombre"
+            placeholder="nombre"
+            required="nombre"
+            />
+
+            <label>apellidos:</label>
+            <input
+            type="apellidos"
+            [(ngModel)]="apellidos"
+            name="apellidos"
+            placeholder="apellidos"
+            required="apellidos"
+            />
+
+            <label>email:</label>
+            <input
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="email"
+            required="email"
+            />
+
+            <label>telefono:</label>
+            <input
+            type="telefono"
+            [(ngModel)]="telefono"
+            name="telefono"
+            placeholder="telefono"
+            required="telefono"
+            />
+
+
+            <p>
+                Estoy de acuerdo con <a href="#">Terminos y condiciones</a>
+            </p>
+        
+            <button (click)="metodoRegistrar()"> Registrar </button>
+        
+            <p>
+                <a href="#">¿Ya tengo cuenta?</a>
+            </p> 
+
+        </section>
+    </body>
+
+</div>
+
+</html>

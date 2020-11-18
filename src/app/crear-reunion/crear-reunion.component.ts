@@ -20,6 +20,7 @@ export class CrearReunionComponent {
 
 
  crear_reunion() {
+   
     const reunion: ReunionDto = {
       temas: this.temas,
       descripcion: this.descripcion,
