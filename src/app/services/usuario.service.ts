@@ -7,6 +7,8 @@ import { UsuarioDto } from '../common/usuario.dto';
   providedIn: 'root'
 })
 export class UsuarioService {
+  postId: any;
+  errorMessage: any;
   constructor(private readonly http: HttpClient) {
   }
 
@@ -17,7 +19,15 @@ export class UsuarioService {
 
   createUsuario(usuario: UsuarioDto): any {
     return this.http.post<any>(`https://siget-grupo2.herokuapp.com/usuarios/createUsuario?username=${usuario.username}&password=${usuario.password}&nombre=${usuario.nombre}&apellidos=${usuario.apellidos}&email=${usuario.email}&telefono=${usuario.telefono}
-    `, {});
+    `, {}).subscribe({
+      next: data => {
+          this.postId = data.id;
+      },
+      error: error => {
+          this.errorMessage = error.message;
+          console.error('There was an error!', error);
+      }
+  });
   }
 
   
