@@ -22,64 +22,72 @@
             type="username"
             [(ngModel)]="username"
             name="username"
-            placeholder="username"
+            placeholder="Username"
             required="username"
             />
+            <br>
 
-            <label>password:</label>
+            <label>Password:</label>
             <input
             type="password"
             [(ngModel)]="password"
             name="password"
-            placeholder="password"
+            placeholder="Password"
             required="password"
             />
+            <br>
 
 
-            <label>nombre:</label>
+            <label>Nombre:</label>
             <input
             type="nombre"
             [(ngModel)]="nombre"
             name="nombre"
-            placeholder="nombre"
+            placeholder="Nombre"
             required="nombre"
             />
+            <br>
 
-            <label>apellidos:</label>
+            <label>Apellidos:</label>
             <input
             type="apellidos"
             [(ngModel)]="apellidos"
             name="apellidos"
-            placeholder="apellidos"
+            placeholder="Apellidos"
             required="apellidos"
             />
+            <br>
 
-            <label>email:</label>
+            <label>Email:</label>
             <input
             type="email"
             [(ngModel)]="email"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             required="email"
             />
+            <br>
 
-            <label>telefono:</label>
+            <label>Telefono:</label>
             <input
             type="telefono"
             [(ngModel)]="telefono"
             name="telefono"
-            placeholder="telefono"
+            placeholder="Telefono"
             required="telefono"
             />
+            <br>
 
 
             <p>
                 Estoy de acuerdo con <a href="#">Terminos y condiciones</a>
             </p>
+            <br>
         
             <button (click)="metodoRegistrar()"> Registrar </button>
-        
+           
             <p>
+                <br>
                 <a href="#">¿Ya tengo cuenta?</a> <li style="float:right;"><a href="login">Volver a login</a></li>
             </p> 
 
@@ -87,3 +95,5 @@
     </body>
 
 </div>
+
+</html>
