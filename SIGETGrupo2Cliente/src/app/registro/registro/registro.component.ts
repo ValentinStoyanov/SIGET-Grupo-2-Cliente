@@ -8,7 +8,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent {
     RolId: string;
     nombre: string;
     apellidos: string;
@@ -16,14 +16,13 @@ export class RegistroComponent implements OnInit {
     username: string;
     email: string;
     password: string;
+
   constructor(public router: Router, private usuarioServicio: UsuarioService) { 
   }
   respuesta: RegistroDto;
 
-  ngOnInit(): void {
-  }
 metodoRegistrar(){
-  const registro: RegistroDto ={
+  const registro: RegistroDto = {
     RolId: this.RolId,
     nombre: this.nombre,
     apellidos: this.apellidos,
@@ -37,12 +36,12 @@ metodoRegistrar(){
   .getRegistro(registro)
   .subscribe({
       next: (resp: RegistroDto)=>{
-        this.respuesta =resp;
+        this.respuesta = resp;
       },
-      error: (err)=>{
+      error: (err) => {
         console.error(err);
       },
       complete: () => (console.log("OK")),
-  })
+  });
 }
 }
