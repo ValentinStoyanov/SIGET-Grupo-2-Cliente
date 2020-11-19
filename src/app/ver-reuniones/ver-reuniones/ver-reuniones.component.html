@@ -17,56 +17,19 @@
   </mat-card-header>
   <mat-card-content>
     <div class="row">
-      <div class="col">
+      <div class="col-11">
         <full-calendar
           *ngIf='calendarVisible'
           [options]='calendarOptions'
           locale="es"
         ></full-calendar>
       </div>
-      <div class="col">
-        <table class="table table-striped">
-          <thead class="tareasTableHead">
-            <tr>
-              <th scope="col" sortable="id">ID</th>
-              <th scope="col" sortable="id">Tema</th>
-              <th scope="col" sortable="id">Descripcion</th>
-              <th scope="col" sortable="id">Fecha_Inicio</th>
-              <th scope="col" sortable="id">Fecha_Fin</th>
-              <th scope="col" sortable="id">Asistentes</th>
-              <th scope="col" sortable="id">Convocante</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let reunion of reuniones; let indexOfelement = index">
-              <td>
-                {{indexOfelement}}
-              </td>
-              <td>
-                {{reunion.temas}}
-              </td>
-              <td>
-                {{reunion.descripcion}}
-              </td>
-              <td>
-                {{reunion.horaInicio}}
-              </td>
-              <td>
-                {{reunion.horaFin}}
-              </td>
-              <td>
-                {{reunion.asistentes}}
-              </td>
-              <td>
-                {{reunion.convocante}}
-              </td>
-            </tr>
-          </tbody>
-      </table>
-    </div>
+      <div class="col" style="margin-left: 5px;">
+        <div class="row">
+          <label>Eliminar reunión seleccionada</label>
+          <button class="btn btn-secondary" style="margin-top: 5px" (click)="onClickMe()">Eliminar</button>
+        </div>
+      </div>
   </div>         
 </mat-card-content>
 </mat-card>
-
-        
-<button (click)="onClickMe()">Eliminar</button>
