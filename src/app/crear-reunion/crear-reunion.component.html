@@ -23,42 +23,54 @@
     
         <form>
             <div class="form-group">
-              <label for="Nombre reunión">Nombre reunión</label>
-              <input type="text" class="form-control">
+              <label for="temas">Nombre reunión</label>
+              <br>
+              <input type="temas"
+              [(ngModel)]="temas"
+              name="temas"
+              required="temas"/>
             </div>
 
             <div class="form-group">
-                <label for="Descripcion">Descripcion</label>
-                <textarea class="form-control form-control-lg"></textarea>
+                <label for="descripcion">Descripcion</label>
+                <br>
+                <input type="descripcion"
+                [(ngModel)]="descripcion"
+                name="descripcion"
+                required="descripcion"/>
             </div>
 
            
             <div class="row">
                 <div class="col">
                     <label for="horaInicio">Hora inicio</label>
-                    <input type="datetime-local" class="form-control" name="Hora inicio">
+                    <input type="datetime-local" class="form-control" [(ngModel)]="horaInicio" name="horaInicio" required="horaInicio">
                 </div>
                 <div class="col">
                     <label for="horaFin">Hora fin</label>
-                    <input type="datetime-local" class="form-control" name="Hora fin">
+                    <input type="datetime-local" class="form-control" [(ngModel)]="horaFin" name="horaFin" required="horaFin">
                 </div>
             </div>
-            
+            <br>
             <div class="form-group">
                 <label for="asistentes">Asistentes</label>
                 <select class="custom-select" id="asistentes" required>
-                  <option selected disabled value="">Elige...</option>
-                  <option>...</option>
-                </select>
+                    <option selected disabled value="">Elige...</option>
+                    <option>...</option>
+                  </select>
                 <div class="invalid-feedback">
                     Por favor elija un asistente
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="convocante"> <strong>Convocante: {{nombreUsuario}}</strong></label>
+            </div>
+
         </form>
    
 
-    <button type="submit" (click)="crear_reunion()">Crear reunión</button>
+    <button type="submit" (click)="reunion()">Crear reunión</button>
 </div>
 
        

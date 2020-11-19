@@ -9,15 +9,16 @@ import { ReunionDto } from '../common/reunion.dto';
   providedIn: 'root'
 })
 export class ReunionService {
-  
-  getReunion(reunion: ReunionDto): any {
-    return this.http.post<any>(`http://localhost:8080/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaFin=${reunion.horaFin}&horaInicio=${reunion.horaInicio}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}`, {});
+  constructor(private readonly http: HttpClient, @Inject(PLATFORM_ID) private platformId: object) {
+  }
+
+  crear_reunion(reunion: ReunionDto): any {
+    return this.http.post<any>(`https://siget-grupo2.herokuapp.com/reuniones/create?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaInicio=${reunion.horaInicio}&horaFin=${reunion.horaFin}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}`, {});
   }
   postId;
   errorMessage;
 
-  constructor(private readonly http: HttpClient, @Inject(PLATFORM_ID) private platformId: object) {
-  }
+ 
 
   getByAsistentes(name: string): Observable<ReunionDto[]> {
     return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/get?asistentes=${name}`)
@@ -42,6 +43,7 @@ export class ReunionService {
         }
     })
 }
+
 
 
 }

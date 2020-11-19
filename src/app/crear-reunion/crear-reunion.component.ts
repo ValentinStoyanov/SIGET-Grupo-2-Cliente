@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { Router } from '@angular/router';
 import { ReunionService } from 'src/app/services/reunion.service';
+import { UsuarioDto } from '../common/usuario.dto';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-crear-reunion',
   templateUrl: './crear-reunion.component.html',
   styleUrls: ['./crear-reunion.component.css']
 })
-export class CrearReunionComponent {
+export class CrearReunionComponent implements OnInit {
   temas: string;
   descripcion: string;
   horaFin: string;
@@ -18,9 +20,14 @@ export class CrearReunionComponent {
  
   constructor(public router: Router, private reunionServicio: ReunionService) { }
   respuesta: ReunionDto;
+  nombreUsuario = localStorage.getItem("name");
+ 
 
+  ngOnInit(): void{
 
- crear_reunion() {
+  }
+
+ reunion() {
 
     const reunion: ReunionDto = {
       temas: this.temas,
@@ -28,11 +35,11 @@ export class CrearReunionComponent {
       horaFin: this.horaFin,
       horaInicio: this.horaInicio,
       asistentes: this.asistentes,
-      convocante: this.convocante
-    }
+      convocante: this.nombreUsuario
+    };
 
     this.reunionServicio
-    .getReunion(reunion)
+    .crear_reunion(reunion)
     .subscribe({
       next: (resp: ReunionDto) => {
         this.respuesta = resp;
@@ -42,6 +49,8 @@ export class CrearReunionComponent {
       },
       complete: () => (console.log("OK")),
     });
+
+
   }
 
 }
