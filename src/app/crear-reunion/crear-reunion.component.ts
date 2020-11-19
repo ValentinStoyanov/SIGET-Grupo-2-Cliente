@@ -24,8 +24,17 @@ export class CrearReunionComponent implements OnInit {
   usuariosRegistrados : UsuarioDto[];
 
   ngOnInit(): void{
-
+        this.usuarioServicio.getAll().subscribe({
+      next: (usuariosReceived: UsuarioDto[]) =>{
+        (this.usuariosRegistrados = usuariosReceived);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (console.log("OK")),
+    });
   }
+  
 
  reunion() {
 
@@ -50,15 +59,7 @@ export class CrearReunionComponent implements OnInit {
       complete: () => (console.log("OK")),
     });
 
-    this.usuarioServicio.getAll().subscribe({
-      next: (usuariosReceived: UsuarioDto[]) =>{
-        (this.usuariosRegistrados = usuariosReceived);
-      },
-      error: (err) => {
-        console.error(err);
-      },
-      complete: () => (console.log("OK")),
-    });
+
     
 
   }

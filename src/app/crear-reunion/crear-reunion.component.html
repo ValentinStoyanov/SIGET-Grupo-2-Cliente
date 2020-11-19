@@ -21,7 +21,7 @@
   
 <div class="container">
     
-        <form>
+        
             <div class="form-group">
               <label for="temas">Nombre reunión</label>
               <br>
@@ -54,7 +54,7 @@
             <br>
             <div class="form-group">
                 <label for="asistentes">Asistentes</label>
-                <select class="custom-select" id="asistentes" required>
+                <select class="custom-select" [(ngModel)]="asistentes" id="asistentes" required multiple>
                     <option selected disabled value="">Elige...</option>
                     <option
                      *ngFor= "let usuariosRegistrado of usuariosRegistrados"
@@ -74,7 +74,7 @@
 
             <input type="reset" value="Borrar información">
             <br>
-        </form>
+        
    
     <br>
     <button type="submit" (click)="reunion()">Crear reunión</button>
