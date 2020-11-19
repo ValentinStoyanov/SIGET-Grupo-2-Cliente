@@ -18,10 +18,10 @@ export class CrearReunionComponent implements OnInit {
   asistentes: string[];
   convocante: string;
  
-  constructor(public router: Router, private reunionServicio: ReunionService) { }
+  constructor(public router: Router, private reunionServicio: ReunionService, private usuarioServicio: UsuarioService) { }
   respuesta: ReunionDto;
   nombreUsuario = localStorage.getItem("name");
- 
+  usuariosRegistrados : UsuarioDto[];
 
   ngOnInit(): void{
 
@@ -50,6 +50,16 @@ export class CrearReunionComponent implements OnInit {
       complete: () => (console.log("OK")),
     });
 
+    this.usuarioServicio.getAll().subscribe({
+      next: (usuariosReceived: UsuarioDto[]) =>{
+        (this.usuariosRegistrados = usuariosReceived);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (console.log("OK")),
+    });
+    
 
   }
 

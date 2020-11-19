@@ -56,7 +56,12 @@
                 <label for="asistentes">Asistentes</label>
                 <select class="custom-select" id="asistentes" required>
                     <option selected disabled value="">Elige...</option>
-                    <option>...</option>
+                    <option
+                     *ngFor= "let usuariosRegistrado of usuariosRegistrados"
+                     [value]= "usuariosRegistrado.username"
+                    >
+                    {{usuariosRegistrado.username}}
+                    </option>
                   </select>
                 <div class="invalid-feedback">
                     Por favor elija un asistente
