@@ -26,6 +26,7 @@ export class CrearReunionComponent implements OnInit {
   indexDelete: number = null;
 
 
+
   ngOnInit(): void{
         this.usuarioServicio.getAll().subscribe({
       next: (usuariosReceived: UsuarioDto[]) =>{
@@ -41,6 +42,7 @@ export class CrearReunionComponent implements OnInit {
 
   reunion(): void {
     console.log(this.asistentes);
+
     const reunion: ReunionDto = {
       temas: this.temas,
       descripcion: this.descripcion,
