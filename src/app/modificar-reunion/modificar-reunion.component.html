@@ -15,22 +15,22 @@
     </thead>
     <tbody>
       <tr *ngFor="let reunion of reuniones">
-        <td>
+        <td (click)="setValues(reunion)">
           {{reunion.temas}}
         </td>
-        <td>
+        <td (click)="setValues(reunion)">
           {{ reunion.descripcion }}
         </td>
-        <td>
+        <td (click)="setValues(reunion)">
           {{ reunion.horaInicio}}
         </td>
-        <td>
+        <td (click)="setValues(reunion)">
           {{ reunion.horaFin }}
         </td>
-        <td>
+        <td (click)="setValues(reunion)">
           {{ reunion.asistentes }}
         </td>
-        <td>
+        <td (click)="setValues(reunion)">
           {{ reunion.convocante }}
         </td>    
       </tr>
@@ -73,46 +73,6 @@
   </div>
 
   <br>
-
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <div class="row">
-          <label for="asistentes">Asistentes Disponibles</label>
-          <select style="height: 200px;" class="custom-select" id="asistentes" required multiple="multiple" multiple>
-            <option selected disabled value="">Elige...</option>
-            <option *ngFor="let usuariosRegistrado of usuariosRegistrados, let indexOfElement = index;"
-              (click)="actualizarIndexAdd(indexOfElement)" [value]="usuariosRegistrado.username">
-              {{usuariosRegistrado.username}}
-            </option>
-          </select>
-        </div>
-        <div class="row">
-          <button class="btn btn-primary" style="margin-top: 5px;" (click)="addAsistente()"> Añadir Asistente</button>
-        </div>
-        <div class="invalid-feedback">
-          Por favor elija un asistente
-        </div>
-      </div>
-      <div class="col">
-        <div class="row">
-          <label for="asistentes">Asistentes Añadidos</label>
-          <select class="custom-select" style="height: 200px;" id="asistentes" required multiple="multiple" multiple>
-            <option selected disabled value="">Asistentes elegidos...</option>
-            <option *ngFor="let usuariosElegido of usuariosElegidos, let indexOfElement = index"
-              (click)="actualizarIndexDelete(indexOfElement)" [value]="usuariosElegido.username">
-              {{usuariosElegido.username}}
-            </option>
-          </select>
-        </div>
-        <div class="row">
-          <button class="btn btn-primary" style="margin-top: 5px; " (click)="deleteAsistente()"> Eliminar
-            Asistente</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
   <div class="form-group">
     <label for="convocante"> <strong>Convocante: {{nombreUsuario}}</strong></label>
   </div>

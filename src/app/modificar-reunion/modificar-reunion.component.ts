@@ -42,12 +42,6 @@ export class ModificarReunionComponent implements OnInit {
       complete: () => (console.log("OK")),
     });
 
-    temas: ["", []]
-    descripcion: ["", []]
-    horaInicio: ["", []]
-    horaFin: ["", []]
-    asistentes: ["", []]
-    convocante: ["", []]
     this.updateTable();
   }
 
@@ -129,5 +123,26 @@ export class ModificarReunionComponent implements OnInit {
       },
       complete: () => (this.loading = false),
     });
+  }
+
+  setValues(reunion: ReunionDto): void {
+    this.temas = reunion.temas;
+    this.descripcion = reunion.descripcion;
+    this.horaInicio = this.parseDateToStringWithFormat(new Date(reunion.horaInicio));
+    this.horaFin = this.parseDateToStringWithFormat(new Date(reunion.horaFin));
+  }
+  private parseDateToStringWithFormat(date: Date): string {
+    let result: string;
+    let dd = date.getDate().toString();
+    let mm = (date.getMonth() + 1).toString();
+    let hh = date.getHours().toString();
+    let min = date.getMinutes().toString();
+    dd = dd.length === 2 ? dd : "0" + dd;
+    mm = mm.length === 2 ? mm : "0" + mm;
+    hh = hh.length === 2 ? hh : "0" + hh;
+    min = min.length === 2 ? min : "0" + min;
+    result = [date.getFullYear(), '-', mm, '-', dd, 'T', hh, ':', min].join('');
+
+    return result;
   }
 }
