@@ -143,12 +143,14 @@ export class VerReunionesComponent implements OnInit {
           var convo = this.reuniones[i].convocante  
           var assis = this.reuniones[i].asistentes
           var desc = this.reuniones[i].descripcion
+          var fechainici = this.reuniones[i].horaInicio
+          var fechafinal = this.reuniones[i].horaFin
         }
       }
       
       alert('Tema: ' + clickInfo.event.title + " \n"
-      +"Fecha y hora de inicio: "+clickInfo.event.start+"\n"
-      +"Fecha y hora de inicio: " +clickInfo.event.end+"\n"
+      +"Fecha y hora de inicio: "+fechainici+"\n"
+      +"Fecha y hora de final: " +fechafinal+"\n"
       +"Convocante: "+convo+"\n"
       +"Assistentes: "+assis+"\n"
       +"Descripcion: "+desc)
