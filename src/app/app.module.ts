@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CrearReunionComponent } from './crear-reunion/crear-reunion.component';
 import { RegistroComponent } from './registro/registro.component';
+import { ModificarReunionComponent } from './modificar-reunion/modificar-reunion.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -31,7 +32,8 @@ FullCalendarModule.registerPlugins([
     LoginComponent,
     VerReunionesComponent,
     CrearReunionComponent,
-    RegistroComponent
+    RegistroComponent,
+    ModificarReunionComponent
   ],
   imports: [
     BrowserModule,

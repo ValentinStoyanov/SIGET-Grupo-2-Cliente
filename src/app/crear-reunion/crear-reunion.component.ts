@@ -61,8 +61,12 @@ export class CrearReunionComponent implements OnInit {
       error: (err) => {
         console.error(err);
       },
-      complete: () => (console.log("OK")),
+      complete: () => (this.updateAddress()),
     });
+  }
+
+  updateAddress(): void {
+    this.router.navigate(['reuniones']);
   }
 
   deleteAsistente(): void{
