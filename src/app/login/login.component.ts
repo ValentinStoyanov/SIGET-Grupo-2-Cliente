@@ -2,6 +2,7 @@
 
 import { Component } from "@angular/core";
 import { Router } from '@angular/router';
+import { timeout } from 'rxjs/operators';
 import { UsuarioDto } from '../common/usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
 
@@ -19,12 +20,18 @@ export class LoginComponent {
   submitted = false;
   respuesta: boolean;
 
-  login() {
+    login() {
+
+
     this.submitted = true;
     
     const usuario: UsuarioDto = {
       username: this.email,
-      password: this.password
+      password: this.password,
+      nombre: "", 
+      apellidos: "", 
+      email : "", 
+      telefono: 1,
     }
     this.servicioUsuario
       .getLogin(usuario)
@@ -32,7 +39,7 @@ export class LoginComponent {
       next: (resp: boolean) => {
         this.respuesta = resp;
       },
-      error: (err) => {
+      error:  (err) => {
         console.error(err);
       },
       complete: () => (this.updateAddress()),
@@ -50,4 +57,14 @@ export class LoginComponent {
       this.invalid = true;
     }
   }
+
+  registrar(): void {
+    this.router.navigate(['registro'])
+  }
+  
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
 }

@@ -2,10 +2,13 @@ import { IsString, IsNotEmpty } from 'class-validator';
 
 export class UsuarioDto {
 
-  @IsNotEmpty()
-  @IsString()
+
   username: string;
   password: string;
+  nombre: string;
+  apellidos: string;
+  email: string;
+  telefono: number;
 
   
 }

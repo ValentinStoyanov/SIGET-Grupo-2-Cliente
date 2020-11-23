@@ -26,6 +26,7 @@ export class CrearReunionComponent implements OnInit {
   indexDelete: number = null;
 
 
+
   ngOnInit(): void{
         this.usuarioServicio.getAll().subscribe({
       next: (usuariosReceived: UsuarioDto[]) =>{
@@ -41,14 +42,17 @@ export class CrearReunionComponent implements OnInit {
 
   reunion(): void {
     console.log(this.asistentes);
+
     const reunion: ReunionDto = {
       temas: this.temas,
       descripcion: this.descripcion,
-      horaFin: this.horaFin,
-      horaInicio: this.horaInicio,
+      horaFin: this.horaFin.substring(5,7)+"/"+ this.horaFin.substring(8,10)+"/"+this.horaFin.substring(0,4)+" "+this.horaFin.substring(11,16),
+      horaInicio: this.horaInicio.substring(5,7) +"/"+this.horaInicio.substring(8,10)+"/"+this.horaInicio.substring(0,4)+" "+this.horaInicio.substring(11,16),
       asistentes: this.asistentes,
       convocante: this.nombreUsuario
     };
+
+    alert('Creando reunion')
 
     this.reunionServicio
     .crear_reunion(reunion)
@@ -61,6 +65,8 @@ export class CrearReunionComponent implements OnInit {
       },
       complete: () => (console.log("OK")),
     });
+
+
   }
 
   deleteAsistente(): void{
