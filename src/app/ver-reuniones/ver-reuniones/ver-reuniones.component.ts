@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 import { createEventId } from 'src/app/event-utils';
-import { Calendar, CalendarApi, EventInput } from '@fullcalendar/core';
+import {  EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
 
