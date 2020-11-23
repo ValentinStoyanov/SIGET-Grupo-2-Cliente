@@ -1,4 +1,17 @@
+<header>
+  <section class="wrapper">
+      <nav>
+          <ul>
+              <li><a href="reuniones">Inicio</a></li>
+              <li><a href="crear-reunion">Crear Reunión</a></li>
+              <li><a href="login">Log out</a></li>
+          </ul>
+      </nav>
+  </section>
+</header>
+
 <mat-card>
+  <br><br><br>
   <mat-card-header>
     <mat-card-title>Reuniones del Usuario: <strong>{{nombreUsuario}}</strong></mat-card-title>
   </mat-card-header>
@@ -36,10 +49,10 @@
                 {{reunion.descripcion}}
               </td>
               <td>
-                {{reunion.hora_inicio}}
+                {{reunion.horaInicio}}
               </td>
               <td>
-                {{reunion.hora_fin}}
+                {{reunion.horaFin}}
               </td>
               <td>
                 {{reunion.asistentes}}
@@ -56,5 +69,4 @@
 </mat-card>
 
         
-
-  
+<button (click)="onClickMe()">Eliminar</button>

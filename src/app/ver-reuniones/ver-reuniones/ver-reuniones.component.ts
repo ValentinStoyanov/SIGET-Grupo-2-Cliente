@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/angular';
 import { createEventId } from 'src/app/event-utils';
-import { EventInput } from '@fullcalendar/core';
+import {  EventInput } from '@fullcalendar/core';
 import { ReunionDto } from 'src/app/common/reunion.dto';
 import { ReunionService } from 'src/app/services/reunion.service';
 
@@ -11,6 +11,7 @@ import { ReunionService } from 'src/app/services/reunion.service';
   styleUrls: ['./ver-reuniones.component.css']
 })
 export class VerReunionesComponent implements OnInit {
+  deleteboolean: boolean = false;
 
   constructor(
     private reunionService: ReunionService,
@@ -52,8 +53,8 @@ export class VerReunionesComponent implements OnInit {
         {
           id: createEventId(),
           title: reunion.temas,
-          start: new Date(reunion.hora_inicio),
-          end: new Date(reunion.hora_fin),
+          start: new Date(reunion.horaInicio),
+          end: new Date(reunion.horaFin),
         }
       this.eventosReuniones.push(evento);
       console.log(this.eventosReuniones);
@@ -84,7 +85,7 @@ export class VerReunionesComponent implements OnInit {
       /* you can update a remote database when these fire:
       eventAdd:
       eventChange:
-      eventRemove:
+      
       */
     };
     this.currentEvents = [];
@@ -103,23 +104,56 @@ export class VerReunionesComponent implements OnInit {
     //Metodo que se ejecuta al hacer click en un dia en el calendario
   }
 
+
+
+
+
   handleEventClick(clickInfo: EventClickArg) {
-    //Implementar si queremos que haga algo al hacer click en la reunion en el calendario.
+    //Implementar si queremos que haga algo al hacer click en la reunion en el calendario.    
+    
+    if(this.deleteboolean==true){
+
+    var fecha_final = clickInfo.event.startStr.substring(5,7)
+    +"/"+clickInfo.event.startStr.substring(8,10)
+    +"/"+clickInfo.event.startStr.substring(0,4)
+    +" "+clickInfo.event.startStr.substring(11,16)
+
+    
     for (let i = 0; i < this.reuniones.length; i++){
-      if(this.reuniones[i].temas==clickInfo.event.title){
-        var convo = this.reuniones[i].convocante  
-        var assis = this.reuniones[i].asistentes
-        var desc = this.reuniones[i].descripcion
+      if(this.reuniones[i].horaInicio==fecha_final){
+        var reun = this.reuniones[i]
       }
     }
+    
+    if(reun.convocante==localStorage.getItem("name")){
+          alert("Borrando") 
 
+          this.reunionService.deleteByHoraInicio(reun)
 
-    alert('Tema: ' + clickInfo.event.title + " \n"
-    +"Fecha y hora de inicio: "+clickInfo.event.start+"\n"
-    +"Fecha y hora de inicio: " +clickInfo.event.end+"\n"
-    +"Convocante: "+convo+"\n"
-    +"Assistentes: "+assis+"\n"
-    +"Descripcion: "+desc)
+          window.location.reload();//Reload windows provisional y con comportamiento erratico
+
+    }else{
+      alert("Imposible borrar, no eres el usuario que ha creado esta reunion")
+    }
+      
+    }else{
+      for (let i = 0; i < this.reuniones.length; i++){
+        if(this.reuniones[i].temas==clickInfo.event.title){
+          var convo = this.reuniones[i].convocante  
+          var assis = this.reuniones[i].asistentes
+          var desc = this.reuniones[i].descripcion
+        }
+      }
+      
+      alert('Tema: ' + clickInfo.event.title + " \n"
+      +"Fecha y hora de inicio: "+clickInfo.event.start+"\n"
+      +"Fecha y hora de inicio: " +clickInfo.event.end+"\n"
+      +"Convocante: "+convo+"\n"
+      +"Assistentes: "+assis+"\n"
+      +"Descripcion: "+desc)
+    }
+    
+
   }
 
   handleEvents(events: EventApi[]) {
@@ -129,4 +163,18 @@ export class VerReunionesComponent implements OnInit {
   createEventId() {
     return String(this.eventGuid++);
   }
+
+  onClickMe() {
+    
+    if(this.deleteboolean==false){
+      this.deleteboolean = true
+      alert("Haz click en alguna reunion del calendario para borrarla")
+    }else{
+      this.deleteboolean = false
+      alert("Borrado en click desactivado")
+    }
+
+    
+  }
+
 }
