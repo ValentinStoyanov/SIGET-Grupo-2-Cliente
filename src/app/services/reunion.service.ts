@@ -44,6 +44,19 @@ export class ReunionService {
     })
 }
 
+getAll(): Observable<ReunionDto[]> {
+  return this.http.get<any>(`https://siget-grupo2.herokuapp.com/reuniones/getAll`)
+  .pipe(
+    map((reunionDto: ReunionDto[]) => {
+      return reunionDto;
+    })
+  );
+}
+
+updateReunion(reunion: ReunionDto): any{
+  return this.http.put<any>(`https://siget-grupo2.herokuapp.com/reuniones/update?temas=${reunion.temas}&descripcion=${reunion.descripcion}&horaInicio=${reunion.horaInicio}&horaFin=${reunion.horaFin}&asistentes=${reunion.asistentes}&convocante=${reunion.convocante}`, {});
+}
+
 
 
 }

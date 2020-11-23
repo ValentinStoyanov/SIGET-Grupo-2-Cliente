@@ -1,5 +1,52 @@
-<!--<div class="container">
+
+<br>
+
+<div class="row" style="margin-left: auto;">
+  <table class="table table-striped">
+    <thead class="reunionesTableHead">
+      <tr>
+        <th scope="col" sortable="temas">Tema</th>
+        <th scope="col" sortable="descripcion">Descripcion</th>
+        <th scope="col" sortable="horaInicio">Hora de inicio</th>
+        <th scope="col" sortable="horaFin">Hora de fin</th>
+        <th scope="col" sortable="Asistentes">Asistentes</th>
+        <th scope="col" sortable="Convocante">Convocante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reunion of reuniones">
+        <td>
+          {{reunion.temas}}
+        </td>
+        <td>
+          {{ reunion.descripcion }}
+        </td>
+        <td>
+          {{ reunion.horaInicio}}
+        </td>
+        <td>
+          {{ reunion.horaFin }}
+        </td>
+        <td>
+          {{ reunion.asistentes }}
+        </td>
+        <td>
+          {{ reunion.convocante }}
+        </td>    
+      </tr>
+      
+    </tbody>
+    <br>
+    <br>
+    
+    <button type="submit" class="btn btn-primary" (click)="updateReunion()">Modificar</button>
+  </table>
+</div>
+
+
+<div class="container">
   <br>
+ 
   <div class="form-group">
     <label for="temas">Nombre reunión</label>
     <br>
@@ -9,9 +56,10 @@
   <div class="form-group">
     <label for="descripcion">Descripcion</label>
     <br>
-    <input type="descripcion" size="155" maxlength="300" [(ngModel)]="descripcion" name="descripcion" required="descripcion" />
+    <input type="descripcion" size="155" maxlength="300" [(ngModel)]="descripcion" name="descripcion"
+      required="descripcion" />
   </div>
-
+  <br>
   <div class="row">
     <div class="col">
       <label for="horaInicio">Hora inicio</label>
@@ -68,12 +116,14 @@
   <div class="form-group">
     <label for="convocante"> <strong>Convocante: {{nombreUsuario}}</strong></label>
   </div>
-  <br>
-  <button type="submit" class="btn btn-primary" (click)="reunion()">Crear reunión</button>
 
 </div>
--->
 
+<br>
+<br>
+
+
+<!--
 <div class="row" style="margin-left: auto;">
   <table class="table table-striped">
     <thead class="tareasTableHead">
@@ -91,14 +141,6 @@
           {{ reunion.descripcion }}
         </td>
         <td>
-          <div *ngIf="tarea.completada">
-            Completada
-          </div>
-          <div *ngIf="!tarea.completada">
-            Pendiente
-          </div>
-        </td>
-        <td>
           <button
           class="btn btn-primary"
           type="button"
@@ -110,8 +152,8 @@
       </tr>
     </tbody>
   </table>
-</div>
-
+</div>-->
+<!--
 <div style="margin-left: 20px;">
   <div class="row" style="margin-left: auto;">
     <label>Datos Tarea</label>
@@ -171,3 +213,4 @@
     </div>
   </form>
 </div>
+-->

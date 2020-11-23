@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ReunionService } from 'src/app/services/reunion.service';
 import { UsuarioDto } from '../common/usuario.dto';
 import { UsuarioService } from '../services/usuario.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-modificar-reunion',
@@ -26,9 +27,31 @@ export class ModificarReunionComponent implements OnInit {
   indexAdd: number = null;
   indexDelete: number = null;
 
+  reuniones :ReunionDto[];
+  loading = false;
+  editForm: FormGroup;
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+        this.usuarioServicio.getAll().subscribe({
+      next: (usuariosReceived: UsuarioDto[]) =>{
+        (this.usuariosRegistrados = usuariosReceived);
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (console.log("OK")),
+    });
+
+    temas: ["", []]
+    descripcion: ["", []]
+    horaInicio: ["", []]
+    horaFin: ["", []]
+    asistentes: ["", []]
+    convocante: ["", []]
+    this.updateTable();
   }
+
+
   reunion(): void {
     console.log(this.asistentes);
 
@@ -41,7 +64,7 @@ export class ModificarReunionComponent implements OnInit {
       convocante: this.nombreUsuario
     };
 
-      this.reunionServicio
+    this.reunionServicio
     .crear_reunion(reunion)
     .subscribe({
       next: (resp: ReunionDto) => {
@@ -80,5 +103,31 @@ export class ModificarReunionComponent implements OnInit {
 
   actualizarIndexDelete(index: number): void {
     this.indexDelete = index;
+  }
+  updateReunion(): void {
+    const reunionDto: ReunionDto = {
+      temas: this.temas,
+      descripcion: this.descripcion,
+      horaFin: this.horaFin,
+      horaInicio: this.horaInicio,
+      asistentes: this.asistentes,
+      convocante: this.nombreUsuario
+    };
+
+    this.reunionServicio.updateReunion(reunionDto)
+  }
+
+  updateTable(): void{
+    this.reunionServicio
+     .getAll()
+     .subscribe({
+      next: (reunionesReceived: ReunionDto[]) => {
+        this.reuniones = reunionesReceived;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => (this.loading = false),
+    });
   }
 }
