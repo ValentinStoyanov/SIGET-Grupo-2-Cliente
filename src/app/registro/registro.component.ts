@@ -26,6 +26,7 @@ export class RegistroComponent implements OnInit {
     }
 
     metodoRegistrar() {
+        
 
         const usuario: UsuarioDto = {
             username: this.username,
